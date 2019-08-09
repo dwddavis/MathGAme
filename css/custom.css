@@ -1,0 +1,11 @@
+#problem{
+  vertical-align: top;
+}
+
+input{
+  vertical-align: bottom;
+}
+
+#timer{
+  font-size: 30px !important;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet" type="text/css"/>
+    <script src="js/application.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class = "container" style = 'background-color:lightgray; padding: 20px; width:350px; '>
+      <div class = "row" style='background-color: red'>
+        <div class = "col-xs-12 ">
+          <h3 style = "text-align:center;"> 10 Second Math Game!! </h3>
+        </div>
+      </div>
+        <div class ='row' style ='background-color:pink'>
+          <div class= 'col-xs-12' id='solve'>
+            <h6 style='text-align:left'>Solve:</h6>
+          </div>
+        </div>
+        <div class = 'row' id='space' style='background-color:yellow;'>
+          <div class ='col-xs-12' id='problem'>
+            <h1 class='problem' style = "text-align:center" ><span id='numbers'></span><span><input type='number' id='answer' style='height: 50px; width: 50px'></span></h1>
+          </div>
+        </div>
+        <div class='row pt-0 mt-0' style ="background-color:orange">
+          <div class= "col-xs-6">
+            <strong><span>TIMER</span><p style = 'text-align:left' class = "pl-1" id='timer'>10</p></strong>
+          </div>
+          <div class ='col-xs-6'>
+              <h5 style='text-align:right'>Score:<span id='score'> 0 </span></h5>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
