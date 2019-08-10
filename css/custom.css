@@ -4,8 +4,26 @@
 
 input{
   vertical-align: bottom;
+  
 }
 
 #timer{
   font-size: 30px !important;
+}
+
+#solve,
+#problem{
+  background-color: white;
+}
+
+#headings{
+  font-size: 40px;
+}
+
+#numbers{
+  font-size: 50px;
+}
+
+#answer{
+  font-size: 50px;
 }
