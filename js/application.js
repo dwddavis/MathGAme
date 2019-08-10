@@ -1,14 +1,16 @@
 var scoring = 0;
 var timex = 10;
+var highScore = 0;
+
 
 var mathGen = function(){
 
   var first = Math.floor((Math.random()*10)+1);
-  var second = Math.floor((Math.random()*(10-first))+1);
+  var second = Math.floor((Math.random()*(10-first)+1));
   rightAnswer= first+second;
 
   $('#numbers').empty();
-  $('#numbers').append(first + ' + ' + second + ' =  ');
+  $('#numbers').append(first + '+' + second + ' =  ');
   $('#answer').focus();
 
 
@@ -41,16 +43,12 @@ var compare = function(){
 
 
 var getReady = function(){
-  var play = confirm('READY TO PLAY?');
-  if (play === true){
+    scoring = 0;
     $('#score').empty();
     $('#score').append('0');
     timing();
     mathGen();
-  }else{
-    $('#numbers').empty();
-    $('#numbers').append('<button style="height:60px" onclick="getReady()">Play</button>')
-  }
+
 }
 
 
@@ -67,14 +65,20 @@ var timing = function(){
       $('#timer').empty();
       $('#timer').append('10');
       $('input').empty();
-      getReady();
+      $('#numbers').empty();
+      $('#numbers').append('<button style="height:60px; color:blue" onclick="getReady()">Play</button>')
+      if( scoring > highScore){
+        highScore=scoring;
+        $('#highscore').empty();
+        $('#highscore').append(highScore);
+      }
     }
   },1000);
 }
 
 $(document).ready(function(){
   $('input').val('');
-  getReady();
+
 
 
   });

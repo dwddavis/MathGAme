@@ -34,15 +34,30 @@
         </div>
         <div class = 'row'>
           <div class ='col-xs-12' id='problem'>
-            <h1 class='problem' style = "text-align:center" ><span id='numbers'></span><span><input type='text' id='answer' style='height: 60px; width: 60px'></span></h1>
+            <h1 class='problem' style = "text-align:center" ><span id='numbers'><button style="height:60px; color:blue" onclick="getReady()">Play</button></span><span><input type='text' id='answer' style='height: 60px; width: 60px'></span></h1>
           </div>
         </div>
+        <div class = 'row'>
+          <div class = 'col-xs-12' style="text-align:center">
+            <input type = 'radio' name='sign' value='+'id='add' onclick="adding()">  +
+            <input type = 'radio' name='sign' value='-'id='minus' onclick="minusing()">  -
+            <input type = 'radio' name='sign' value='x'id='times'>  x
+            <input type = 'radio' name='sign' value='/'id='half'>  /
+          </div>
+        </div>
+
         <div class='row pt-0 mt-0'>
           <div class= "col-xs-6">
             <strong><span>TIMER</span><p style = 'text-align:left' class = "pl-1" id='timer'>10</p></strong>
           </div>
           <div class ='col-xs-6'>
-              <h5 style='text-align:right'>Score:<span id='score'> 0 </span></h5>
+              <h5 style='text-align:right'>Score:<span id='score'> 0 </span></h5><br>
+
+          </div>
+        </div>
+        <div class='row'>
+          <div class =' col-xs-12'>
+            <h4 style='text-align:center'>High Score:<span id='highscore'></span><h4>
           </div>
         </div>
       </div>
