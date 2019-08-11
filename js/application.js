@@ -1,16 +1,58 @@
 var scoring = 0;
 var timex = 10;
 var highScore = 0;
+var sign ='';
+var formula;
+
+
+var maxNumber = function(){
+  $('#slideNumber').empty();
+  $('#slideNumber').append($('#slidingBar').val())
+}
+
+var adding = function(){
+  sign = ' + ';
+    formula = function(a,b){
+      rightAnswer = a+b;
+      return rightAnswer;
+    }
+}
+
+var minusing = function(){
+  sign = ' - ';
+  formula = function(a,b){
+    rightAnswer = a-b;
+    return rightAnswer;
+  }
+}
+
+var timesing = function(){
+  sign = ' x ';
+  formula = function(a,b){
+    rightAnswer = a*b;
+    return rightAnswer;
+}
+}
+
+var halfing = function(){
+  sign = ' / ';
+  formula = function(a,b){
+    rightAnswer = a/b;
+    return rightAnswer;
+}
+}
+
 
 
 var mathGen = function(){
 
-  var first = Math.floor((Math.random()*10)+1);
-  var second = Math.floor((Math.random()*(10-first)+1));
-  rightAnswer= first+second;
+  var ranges = $('#slidingBar').val();
+  var first = Math.floor((Math.random()*ranges)+1);
+  var second = Math.floor((Math.random()*(ranges)+1));
+  formula(first,second);
 
   $('#numbers').empty();
-  $('#numbers').append(first + '+' + second + ' =  ');
+  $('#numbers').append(first + sign + second + ' =  ');
   $('#answer').focus();
 
 
@@ -32,7 +74,7 @@ var compare = function(){
       scoring += 1;
       $('#score').empty();
       $('#score').append(scoring);
-      $('input').val("");
+      $('#answer').val("");
       timex+=1;
       $('#timer').empty();
       $('#timer').append(timex);
@@ -64,7 +106,7 @@ var timing = function(){
       alert('gameover');
       $('#timer').empty();
       $('#timer').append('10');
-      $('input').empty();
+      $('#answer').empty();
       $('#numbers').empty();
       $('#numbers').append('<button style="height:60px; color:blue" onclick="getReady()">Play</button>')
       if( scoring > highScore){
@@ -77,7 +119,9 @@ var timing = function(){
 }
 
 $(document).ready(function(){
-  $('input').val('');
+  $('#answer').val('');
+  adding();
+  maxNumber();
 
 
 
