@@ -3,6 +3,11 @@ var timex = 10;
 var highScore = 0;
 var sign ='';
 var formula;
+var cleanDivide;
+var ranges;
+var halfer=0;
+var first;
+var second;
 
 
 var maxNumber = function(){
@@ -12,14 +17,16 @@ var maxNumber = function(){
 
 var adding = function(){
   sign = ' + ';
-    formula = function(a,b){
-      rightAnswer = a+b;
-      return rightAnswer;
-    }
+  halfer = 0;
+  formula = function(a,b){
+    rightAnswer = a+b;
+    return rightAnswer;
+  }
 }
 
 var minusing = function(){
   sign = ' - ';
+  halfer = 0;
   formula = function(a,b){
     rightAnswer = a-b;
     return rightAnswer;
@@ -28,75 +35,88 @@ var minusing = function(){
 
 var timesing = function(){
   sign = ' x ';
+  halfer = 0;
   formula = function(a,b){
     rightAnswer = a*b;
     return rightAnswer;
-}
+  }
 }
 
 var halfing = function(){
   sign = ' / ';
-  formula = function(a,b){
-    rightAnswer = a/b;
+  halfer = 1;
+}
+
+cleanDivide = function(){
+  first = Math.floor((Math.random()* ranges)+1);
+  second = Math.floor((Math.random()* (ranges)+1));
+  if (first%second === 0 && second !== 1){
+    rightAnswer = first/second;
     return rightAnswer;
-}
-}
+  }else{
+    cleanDivide();
+    }
+  }
+
 
 
 
 var mathGen = function(){
 
-  var ranges = $('#slidingBar').val();
-  var first = Math.floor((Math.random()*ranges)+1);
-  var second = Math.floor((Math.random()*(ranges)+1));
+if(halfer === 0){
+  first = Math.floor((Math.random()*ranges)+1);
+  second = Math.floor((Math.random()*(ranges)+1));
   formula(first,second);
+}else{
+  cleanDivide();
+}
 
-  $('#numbers').empty();
-  $('#numbers').append(first + sign + second + ' =  ');
-  $('#answer').focus();
+$('#numbers').empty();
+$('#numbers').append(first + sign + second + ' =  ');
+$('#answer').focus();
 
 
 
-  var timeout;
-  $('input').on('input', function(){
-    clearTimeout(timeout);
-    timeout=setTimeout(function(){
-      compare();
-    },200);
+var timeout;
+$('input').on('input', function(){
+  clearTimeout(timeout);
+  timeout=setTimeout(function(){
+    compare();
+  },200);
 });
 
 }
 
 var compare = function(){
-    var userAnswer = parseFloat($('#answer').val());
-    if( userAnswer === rightAnswer){
+  var userAnswer = parseFloat($('#answer').val());
+  if( userAnswer === rightAnswer){
 
-      scoring += 1;
-      $('#score').empty();
-      $('#score').append(scoring);
-      $('#answer').val("");
-      timex+=1;
-      $('#timer').empty();
-      $('#timer').append(timex);
-      mathGen();
+  scoring += 1;
+  $('#score').empty();
+  $('#score').append(scoring);
+  $('#answer').val("");
+  timex+=1;
+  $('#timer').empty();
+  $('#timer').append(timex);
+  mathGen();
 
   }
 }
 
 
 var getReady = function(){
-    scoring = 0;
-    $('#score').empty();
-    $('#score').append('0');
-    timing();
-    mathGen();
+  scoring = 0;
+  $('#score').empty();
+  $('#score').append('0');
+  timing();
+  mathGen();
 
 }
 
 
 var timing = function(){
-    timex=10;
-    var x = setInterval(function(){
+  timex=10;
+  var x = setInterval(function(){
     timex -=1;
     $('#timer').empty();
     $('#timer').append(timex);
@@ -122,7 +142,5 @@ $(document).ready(function(){
   $('#answer').val('');
   adding();
   maxNumber();
-
-
-
-  });
+  ranges = $('#slidingBar').val();
+});
