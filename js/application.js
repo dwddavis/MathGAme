@@ -45,19 +45,12 @@ var timesing = function(){
 var halfing = function(){
   sign = ' / ';
   halfer = 1;
-}
+  cleanDivide = function(a,b){
+    first = a*b;
+    return first;
 
-cleanDivide = function(){
-  first = Math.floor((Math.random()* ranges)+1);
-  second = Math.floor((Math.random()* (ranges)+1));
-  if (first%second === 0 && second !== 1){
-    rightAnswer = first/second;
-    return rightAnswer;
-  }else{
-    cleanDivide();
-    }
   }
-
+}
 
 
 
@@ -68,7 +61,9 @@ if(halfer === 0){
   second = Math.floor((Math.random()*(ranges)+1));
   formula(first,second);
 }else{
-  cleanDivide();
+  rightAnswer = Math.floor((Math.random()*ranges)+1);
+  second = Math.floor((Math.random()*(ranges)+1));
+  cleanDivide(rightAnswer,second);
 }
 
 $('#numbers').empty();
